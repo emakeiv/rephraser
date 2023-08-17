@@ -1,5 +1,6 @@
 install:
-	#install commands
+    #installing dependencies
+	pipenv install
 format:
 	#format code
 lint:
