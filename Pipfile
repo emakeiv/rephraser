@@ -12,6 +12,7 @@ fire = "*"
 fastapi = "*"
 uvicorn = "*"
 python-dotenv = "*"
+openai = "*"
 
 [dev-packages]
 
