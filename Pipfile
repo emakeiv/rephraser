@@ -10,6 +10,8 @@ pylint = "*"
 black = "*"
 fire = "*"
 fastapi = "*"
+uvicorn = "*"
+python-dotenv = "*"
 
 [dev-packages]
 

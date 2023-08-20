@@ -1,0 +1,75 @@
+-----------------
+Rephraser feature
+-----------------
+
+The input for rephrase feature is the user's entered text (or text from the user's website) and the output
+of the feature is - rephrased text. For example:
+ - The first pair of Shleps was knit by Edu's grandma - as a gift for a climbing grandson. Wasn't long
+ before people in the climbing gym started noticed and putting ideas into our heads - so here we are !
+ transform into :
+ - Edu's grandma lovingly knitted the intial set of Shleps as a special present for her adventurous grandson
+who enjoyed climbing. It didn't take much time for others at the climbing gym to take notice and inspire us
+with their suggestions, leading us to where we are today!
+
+We agreed that rephrasing endpoint will accept such HTTP request:
+{
+      "text": "Text that user entered in their website text block and that needs to be rephrased"
+      "number_of variants": 2
+}
+
+Response from yout API endpoint should look like this:
+[
+      "Rephrased text variant 1",
+      "Rephrased text variant 2"
+]
+
+
+----------------------------------
+Section content generation feature
+----------------------------------
+The input for this feature consists of user-provided bussiness decsriptions and a section structure 
+needed for a website. The output is the provided structure echanced with generated text. It is agreed
+that the section content generation endpoint will accept such HTTP request:
+
+{
+    "description": "User business decription",
+    "sections": [
+        "about": {
+            "title: 1,
+            "description": 2
+        },
+        "refunds": {
+            "title: 1,
+            "description": 1
+                    },
+        "hero": {
+            "title: 1,
+            "subtitle": 1
+        }
+    ]
+}
+
+Where the sections object contains information about what sections are needed for the user's 
+website and each section can have title, subtitle, and description (they are all optional) 
+fields that describe the section. For example about section can have title and description
+field required in one request/case but title , subtitle and description on the next request/case. 
+Each section fields are optional. It is agreed that for now only about, refund and hero sections 
+will be supported by this API. Keep in mind that some websites might not use all of the sections 
+for example about and hero sections are needed. Response from this API endpoint should look like this:
+{
+      "about":{
+            "title": "About us",
+            "description": [
+                  "We do something",
+                  "Developing unique products"
+            ]
+      },
+      "refunds":{
+            "title": "Information about refund",
+            "description": "I want to know more"
+      },
+      "hero":{
+            "title": "Unique product development and other cool stuf",
+            "subtitle": "The use of quartz sand is a thing"
+      }
+}
