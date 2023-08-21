@@ -1,2 +1,5 @@
+# rnvironments
 .env
-
+.venv
+env/
+venv/
