@@ -14,15 +14,18 @@ jobs:
     - name: Install dependencies
       run: |
         make install
-    - name: Lint with pylint
-      run: |
-        #make lint
-    - name: Test
-      run: |
-        #make test
     - name: Format code
       run: |
-        #make format
-    - name: Build Container
+        make format
+    - name: Lint
+      run: |
+        make lint
+    - name: Test
+      run: |
+        make test
+    - name: Build
       run: |
         #make build
+    - name: Deploy 
+      run: |
+        #make deploy
