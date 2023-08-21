@@ -5,10 +5,10 @@ format:
 lint:
 	pylint --disable=R,C app
 test:
-	#test
+	pytest -vv tests/* app tests
 build:
 	#build container
 deploy:
 	#deploy
 
-all: install format lint test deploy
+all: install format lint test build deploy

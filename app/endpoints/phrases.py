@@ -1,5 +1,5 @@
 from app import dependencies
-from fastapi import APIRouter, Depends, Body
+from fastapi import APIRouter, Depends
 from app.schemas.models import RephraseRequestSchema
 
 router = APIRouter()

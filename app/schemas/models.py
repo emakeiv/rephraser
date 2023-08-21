@@ -3,7 +3,9 @@ from pydantic import BaseModel, Field
 
 class RephraseRequestSchema(BaseModel):
     text: str = Field(..., min_length=1, description="Text to be rephrased")
-    number_of_variants: int = Field(..., gt=0, description="Number of rephrased variants")
+    number_of_variants: int = Field(
+        ..., gt=0, description="Number of rephrased variants"
+    )
 
     class Config:
         json_schema_extra = {
@@ -25,7 +27,7 @@ class SectionSchema(BaseModel):
 
 
 class SectionRequestSchema(BaseModel):
-    description: str
+    description: str = Field(..., min_length=1, description="User business decription")
     sections: dict[str, SectionSchema]
 
     class Config:
