@@ -16,18 +16,40 @@ class RephraseResponseSchema(BaseModel):
     variants: list[str]
 
 class SectionSchema(BaseModel):
-    title: str | None = None
-    subtitle: str | None = None
-    description: list[str] | None = None
+    title: int | None = None
+    subtitle: int | None = None
+    description: int | None = None
 
 class SectionRequestSchema(BaseModel):
     description: str
     sections: dict[str, SectionSchema]
 
+    class Config:
+        json_schema_extra = {
+            "example": {
+                "description": "User business decription",
+                "sections": {
+                    "about": {
+                        "title": 1,
+                        "description": 2
+                    },
+                     "refunds": {
+                        "title": 1,
+                        "description": 1
+                    },
+                    "hero": {
+                        "title": 1,
+                        "subtitle": 1
+                    }
+                }
+            }
+        }
+
+
 class SectionResponseSchema(BaseModel):
     title: str
     subtitle: str | None = None
-    description: list[str] | None = None
+    description: list[str] | str = None
 
 
 

@@ -1,6 +1,0 @@
-    def generate_rephrased_variants(text, num_variants):
-        for _ in range(num_variants):
-            rephrased_text = openai_instance.get_completion(text)
-            yield rephrased_text
-
-    response = RephraseResponseSchema(variants=list(generate_rephrased_variants(request.text, request.number_of_variants)))

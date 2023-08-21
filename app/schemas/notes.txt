@@ -32,21 +32,21 @@ needed for a website. The output is the provided structure echanced with generat
 that the section content generation endpoint will accept such HTTP request:
 
 {
-    "description": "User business decription",
-    "sections": [
-        "about": {
-            "title: 1,
-            "description": 2
-        },
-        "refunds": {
-            "title: 1,
-            "description": 1
-                    },
-        "hero": {
-            "title: 1,
-            "subtitle": 1
-        }
-    ]
+      "description": "User business decription",
+      "sections": [
+            "about": {
+                  "title": 1,
+                  "description": 2
+            },
+            "refunds": {
+                  "title": 1,
+                  "description": 1
+            },
+            "hero": {
+                  "title": 1,
+                  "subtitle": 1
+            }
+      ]
 }
 
 Where the sections object contains information about what sections are needed for the user's 
