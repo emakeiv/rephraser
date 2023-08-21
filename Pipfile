@@ -13,6 +13,7 @@ fastapi = "*"
 uvicorn = "*"
 python-dotenv = "*"
 openai = "*"
+httpx = "*"
 
 [dev-packages]
 

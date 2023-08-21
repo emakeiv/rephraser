@@ -1,12 +1,13 @@
 install:
-    #installing dependencies
 	pipenv install
 format:
-	#format code
+	black app tests
 lint:
-	#pylint
+	pylint --disable=R,C app
 test:
 	#test
+build:
+	#build container
 deploy:
 	#deploy
 
