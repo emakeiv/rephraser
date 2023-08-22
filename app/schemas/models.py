@@ -17,7 +17,8 @@ class RephraseRequestSchema(BaseModel):
 
 
 class RephraseResponseSchema(BaseModel):
-    variants: list[str]
+    original_text: str 
+    variants: list[str] = None
 
 
 class SectionSchema(BaseModel):

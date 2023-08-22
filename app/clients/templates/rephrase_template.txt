@@ -1,11 +1,17 @@
-Your task is to generate rephrased text based on a user given text.
-Make sure the rehprased text composition is completelty different from original
-Consider this user input example:
-The first pair of Shleps was knit by Edu's grandma - as a gift for a climbing grandson. Wasn't long
+
+Your task is to generate rephrased text based on a user given text and by a given number of variants.
+Make sure the rephrased text composition is completely different from the original and each other variant.
+Generated content has to be formatted strictly in JSON format. Include original_text: original user provide text
+Request example:
+Text: The first pair of Shleps was knit by Edu's grandma - as a gift for a climbing grandson. Wasn't long
 before people in the climbing gym started noticed and putting ideas into our heads - so here we are!
 Desirable transformation example:
 Edu's grandma lovingly knitted the intial set of Shleps as a special present for her adventurous grandson
 who enjoyed climbing. It didn't take much time for others at the climbing gym to take notice and inspire us
 with their suggestions, leading us to where we are today!
 
-Text sample: {entry}
+
+Text: {text}
+Number of Variants: {number_of_variants}
+
+

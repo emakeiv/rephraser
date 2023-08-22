@@ -6,7 +6,12 @@ from app.common.parsers import ResponseParser
 router = APIRouter()
 parser = ResponseParser()
 
-@router.post("/generate-sections", tags=["sections"], response_model=SectionResponseSchema)
+@router.post(
+    "/generate-sections", 
+    tags=["sections"], 
+    response_model=dict[str,SectionResponseSchema],
+    response_model_exclude_none=True
+)
 async def generate_sections(
     request: SectionRequestSchema, openai_client=Depends(dependencies.get_openai_client)
 ):
@@ -16,9 +21,5 @@ async def generate_sections(
     except Exception as e:
         raise HTTPException(status_code=500, detail="An error occurred while processing your request")
 
-    section_responses = parser.parse_response(generated_sections[0], SectionResponseSchema)
-    return section_responses
-   
-
-    
-    
+    response_data = parser.parse_response(generated_sections[0], SectionResponseSchema)
+    return response_data

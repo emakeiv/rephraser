@@ -12,30 +12,8 @@ class OpenAiServiceClient:
         
     async def get_response(self, user_input:dict, template_name:str):
       
-        '''
-        comes from process_phrase() in phrases.py
-        {
-            'text': 'Brown fox jumps over the lazy dog',
-            'number_of_variants': 2
-        }
-
-        comes from generate_sections() in sections.py
-        {
-            'description': 'Company sales quality cofins because death is always in demand', 
-            'sections': {
-                    'about': {
-                        'title': 1, 
-                        'subtitle': None, 
-                        'description': 2
-                    }
-            }
-        }
-        '''
-
         template = await self.template_manager.get_template(template_name)
-        
         promt = self.template_preprocessor.preprocess_template(user_input, template)
-
         try:
             messages = [{"role": "user", "content": promt}]
 
