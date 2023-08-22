@@ -1,68 +1,24 @@
-import asyncio
 from app import dependencies
 from fastapi import APIRouter, Depends
 from app.schemas.models import SectionRequestSchema, SectionResponseSchema
+from app.common.parsers import ResponseParser
 
 router = APIRouter()
+parser = ResponseParser()
 
-# {
-#       "description": "User business decription",
-#       "sections": [
-#             "about": {
-#                   "title": 1,
-#                   "description": 2
-#             },
-#             "refunds": {
-#                   "title": 1,
-#                   "description": 1
-#             },
-#             "hero": {
-#                   "title": 1,
-#                   "subtitle": 1
-#             }
-#       ]
-# }
-
-
-@router.post(
-    "/generate-sections", tags=["section_content"], response_model=SectionResponseSchema
-)
+@router.post("/generate-sections", tags=["sections"], response_model=SectionResponseSchema)
 async def generate_sections(
-    req: SectionRequestSchema, openai_client=Depends(dependencies.get_openai_client)
+    request: SectionRequestSchema, openai_client=Depends(dependencies.get_openai_client)
 ):
-    async def generate_section(section_name, section_data):
-        generated_content = {}
+    user_input = request.dict()
+    try:
+        generated_sections = await openai_client.get_response(user_input, template_name="generate_section_template")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail="An error occurred while processing your request")
 
-        async def generate_section(section_name, section_data):
-            generated_variants = openai_client.get_response(
-                user_input=section_data.description, variants=section_data.title
-            )
-            generated_content[section_name] = generated_variants
+    section_responses = parser.parse_response(generated_sections[0], SectionResponseSchema)
+    return section_responses
+   
 
-        tasks = [
-            generate_section(section_name, section_data)
-            for section_name, section_data in req.sections.items()
-        ]
-
-        await asyncio.gather(*tasks)
-
-        return generated_content
-
-
-# {
-#       "about":{
-#             "title": "About us",
-#             "description": [
-#                   "We do something",
-#                   "Developing unique products"
-#             ]
-#       },
-#       "refunds":{
-#             "title": "Information about refund",
-#             "description": "I want to know more"
-#       },
-#       "hero":{
-#             "title": "Unique product development and other cool stuf",
-#             "subtitle": "The use of quartz sand is a thing"
-#       }
-# }
+    
+    

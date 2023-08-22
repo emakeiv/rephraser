@@ -3,9 +3,9 @@ install:
 format:
 	black app tests
 lint:
-	pylint --disable=R,C app
+	pylint --disable=R,C app 
 test:
-	pytest -vv tests/* app tests
+	pytest -vv tests/* 
 build:
 	#build container
 deploy:

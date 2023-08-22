@@ -1,0 +1,11 @@
+Your task is to generate rephrased text based on a user given text.
+Make sure the rehprased text composition is completelty different from original
+Consider this user input example:
+The first pair of Shleps was knit by Edu's grandma - as a gift for a climbing grandson. Wasn't long
+before people in the climbing gym started noticed and putting ideas into our heads - so here we are!
+Desirable transformation example:
+Edu's grandma lovingly knitted the intial set of Shleps as a special present for her adventurous grandson
+who enjoyed climbing. It didn't take much time for others at the climbing gym to take notice and inspire us
+with their suggestions, leading us to where we are today!
+
+Text sample: {entry}

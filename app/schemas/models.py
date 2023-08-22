@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, validator
 
 
 class RephraseRequestSchema(BaseModel):
@@ -10,7 +10,7 @@ class RephraseRequestSchema(BaseModel):
     class Config:
         json_schema_extra = {
             "example": {
-                "text": "Sample of text to be rephrased",
+                "text": "Brown fox jumps over the lazy dog",
                 "number_of_variants": 2,
             }
         }
@@ -27,13 +27,24 @@ class SectionSchema(BaseModel):
 
 
 class SectionRequestSchema(BaseModel):
-    description: str = Field(..., min_length=1, description="User business decription")
+    description: str = Field(..., min_length=1, description="User business description")
     sections: dict[str, SectionSchema]
+
+    @validator("sections", pre=True, always=True)
+    def filter_empty_sections(cls, value):
+        return {
+            section_name: section_data
+            for section_name, section_data in value.items()
+            if any(
+                component is not None and isinstance(component, int)
+                for component in section_data.values()
+            )
+        }
 
     class Config:
         json_schema_extra = {
             "example": {
-                "description": "User business decription",
+                "description": "Company sales quality cofins because death is always in demand",
                 "sections": {
                     "about": {"title": 1, "description": 2},
                     "refunds": {"title": 1, "description": 1},
