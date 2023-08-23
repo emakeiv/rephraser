@@ -1,12 +1,12 @@
-1. Create a RESTful API with two endpoints: 
+✅ 1. Create a RESTful API with two endpoints: 
       - rephrase functionality 
       - section content generation.
 2. Implement authentication for the API endpoints (basic auth or bearer token).
 3. Implement error handling to ensure robustness.
 4. Package the API into a Docker container.
-5. Use the OpenAI API for text generation.
+✅5. Use the OpenAI API for text generation.
       5.1. Perform prompt engineering for desired results.
       5.2. Choose a specific model for text generation.
       5.3. Decide on other parameters for text generation.
 6. Host the API on Google Cloud Platform (GCP).
-7. Implement parallelization for requests to the OpenAI API.
+✅7. Implement parallelization for requests to the OpenAI API.
