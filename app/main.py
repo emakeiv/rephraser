@@ -3,6 +3,7 @@ from app.endpoints import phrases, sections
 from fastapi.middleware.cors import CORSMiddleware
 from app.security.auth import AuthorizeRequestMiddleware
 
+
 def create_server():
     server = FastAPI(debug=True)
     server.add_middleware(AuthorizeRequestMiddleware)
@@ -13,11 +14,10 @@ def create_server():
         allow_methods=["*"],
         allow_headers=["*"],
     )
-   
+
     server.include_router(phrases.router)
     server.include_router(sections.router)
 
-    
     return server
 
 

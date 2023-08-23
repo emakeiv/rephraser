@@ -3,3 +3,22 @@
 .venv
 env/
 venv/
+
+# Unit test coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# byte-compiled
+__pycache__/
+*.py[cod]
+*$py.class

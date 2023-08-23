@@ -6,6 +6,7 @@ from app.schemas.models import RephraseRequestSchema, RephraseResponseSchema
 router = APIRouter()
 security_schema = HTTPBearer()
 
+
 @router.post("/rephrase", tags=["rephraser"], response_model=list[str])
 async def process_phrase(
     request: RephraseRequestSchema,
@@ -13,7 +14,7 @@ async def process_phrase(
     template_manager=Depends(dependencies.get_template_manager),
     template_preprocessor=Depends(dependencies.get_template_preprocessor),
     parser=Depends(dependencies.get_response_parser),
-    token:str=Depends(security_schema)
+    token: str = Depends(security_schema),
 ):
     user_input = request.dict()
     try:

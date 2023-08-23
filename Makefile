@@ -7,7 +7,9 @@ lint:
 test:
 	pytest -vv --cov=app tests/*	
 build:
-	#build container
+	docker build -t phraser-api .
+run:
+	docker run -p 127.0.0.1:8000:8000 4bce3ab7c8a0
 deploy:
 	#deploy
 

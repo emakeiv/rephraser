@@ -1,4 +1,3 @@
-
 from jwt import (
     ExpiredSignatureError,
     ImmatureSignatureError,
@@ -7,7 +6,7 @@ from jwt import (
     InvalidKeyError,
     InvalidSignatureError,
     InvalidTokenError,
-    MissingRequiredClaimError
+    MissingRequiredClaimError,
 )
 
 from app.security.token_utils import decode_token, encode_token
@@ -17,6 +16,7 @@ from fastapi.requests import Request
 from fastapi.responses import JSONResponse
 
 from starlette.middleware.base import BaseHTTPMiddleware
+
 
 class AuthorizeRequestMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next):
@@ -54,4 +54,3 @@ class AuthorizeRequestMiddleware(BaseHTTPMiddleware):
         else:
             request.state.user_id = token_payload["sub"]
         return await call_next(request)
-
