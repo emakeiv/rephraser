@@ -1,10 +1,10 @@
 from app import dependencies
-from fastapi import APIRouter, Depends
+from fastapi.security import HTTPBearer
+from fastapi import APIRouter, Depends, HTTPException
 from app.schemas.models import SectionRequestSchema, SectionResponseSchema
 
-
 router = APIRouter()
-
+security_schema = HTTPBearer()
 @router.post(
     "/generate-sections",
     tags=["sections"],
@@ -16,12 +16,16 @@ async def generate_sections(
     openai_client=Depends(dependencies.get_openai_client),
     template_manager=Depends(dependencies.get_template_manager),
     template_preprocessor=Depends(dependencies.get_template_preprocessor),
-    parser=Depends(dependencies.get_response_parser)
+    parser=Depends(dependencies.get_response_parser),
+    token:str=Depends(security_schema)
+    
 ):
     user_input = request.dict()
 
     try:
-        template = await template_manager.get_template(template_name="generate_section_template")
+        template = await template_manager.get_template(
+            template_name="generate_section_template"
+        )
         promt = template_preprocessor.preprocess_template(user_input, template)
         generated_sections = await openai_client.get_response(promt)
     except Exception:

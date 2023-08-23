@@ -5,7 +5,7 @@ format:
 lint:
 	pylint --disable=R,C app 
 test:
-	pytest -vv tests/* 
+	pytest -vv --cov=app tests/*	
 build:
 	#build container
 deploy:

@@ -1,7 +1,7 @@
-✅ 1. Create a RESTful API with two endpoints: 
+✅1. Create a RESTful API with two endpoints: 
       - rephrase functionality 
       - section content generation.
-2. Implement authentication for the API endpoints (basic auth or bearer token).
+✅2. Implement authentication for the API endpoints (basic auth or bearer token).
 3. Implement error handling to ensure robustness.
 4. Package the API into a Docker container.
 ✅5. Use the OpenAI API for text generation.

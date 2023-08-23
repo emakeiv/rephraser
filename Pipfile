@@ -6,18 +6,19 @@ name = "pypi"
 [packages]
 pytest = "*"
 pytest-cov = "*"
-pylint = "*"
-black = "*"
 fire = "*"
 fastapi = "*"
 uvicorn = "*"
 python-dotenv = "*"
 openai = "*"
 httpx = "*"
-install = "*"
 pydantic-settings = "*"
+pyjwt= "*"
+cryptography= "*"
 
 [dev-packages]
+pylint = "*"
+black = "*"
 
 [requires]
 python_version = "3.10"

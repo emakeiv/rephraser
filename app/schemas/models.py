@@ -1,5 +1,6 @@
 from pydantic import BaseModel, Field
 
+
 class RephraseRequestSchema(BaseModel):
     text: str = Field(..., min_length=1, description="Text to be rephrased")
     number_of_variants: int = Field(

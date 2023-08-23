@@ -2,7 +2,7 @@ import openai
 
 
 class OpenAiServiceClient:
-    def __init__(self, key:str, model:str):
+    def __init__(self, key: str, model: str):
         openai.api_key = key
         self.model = model
 

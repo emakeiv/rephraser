@@ -1,0 +1,2 @@
+#GET ENCRPYTED KEYS:
+openssl req -x509 -newkey rsa:2048 -keyout private_key.pem -out public_key.pem -nodes -subj "/CN=api_router"

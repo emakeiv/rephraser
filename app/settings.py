@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     testing: bool = os.getenv("TESTING")
     database_url: str = os.getenv("DATABASE_URL")
     open_ai_key: str = os.getenv("OPEN_AI_KEY")
-    llm_model:str =  os.getenv("LLM_MODEL")
+    llm_model: str = os.getenv("LLM_MODEL")
     auth_sec: str = os.getenv("AUTH_SECRET")
     auth_alg: str = os.getenv("AUTH_ALGO")
 

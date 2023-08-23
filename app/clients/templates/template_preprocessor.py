@@ -12,5 +12,3 @@ class TemplatePreprocessor:
 
         user_input["dynamic_sections"] = dynamic_sections
         return template.format(**flatten_dict(user_input))
-
-
