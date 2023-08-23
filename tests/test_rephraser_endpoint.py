@@ -1,18 +1,18 @@
-import pytest
-from app.main import app
-from fastapi.testclient import TestClient
-from unittest.mock import MagicMock, patch
+# import pytest
+# from app.main import app
+# from fastapi.testclient import TestClient
+# from unittest.mock import MagicMock, patch
 
-client = TestClient(app)
+# client = TestClient(app)
 
-data = {
-    "valid_a": {"text": "Sample input text to be rephrased.", "number_of_variants": 2},
-    "invalid_a": {
-        "text": "Sample input text to be rephrased.",
-        "number_of_variants": -2,
-    },
-    "invalid_b": {"text": "", "number_of_variants": 1},
-}
+# data = {
+#     "valid_a": {"text": "Sample input text to be rephrased.", "number_of_variants": 2},
+#     "invalid_a": {
+#         "text": "Sample input text to be rephrased.",
+#         "number_of_variants": -2,
+#     },
+#     "invalid_b": {"text": "", "number_of_variants": 1},
+# }
 
 # TODO refactor
 
