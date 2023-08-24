@@ -18,7 +18,7 @@ build:
 	# $(eval DOCKER_IMAGE_ID := $(shell docker images -q rephraser-api-image))
 
 run:
-	docker run -p 127.0.0.1:8000:8000 rephraser-api-image:latest 
+	docker run -p 127.0.0.1:8000:8000 rephraser-api-image
 
 deploy:
 	# deploy
