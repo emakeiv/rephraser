@@ -14,11 +14,11 @@ test:
 	pytest -vv --cov=app tests/*
 
 build:
-	docker build -t phraser-api .
-	# $(eval DOCKER_IMAGE_ID := $(shell docker images -q phraser-api))
+	docker build -t rephraser-api-image .
+	# $(eval DOCKER_IMAGE_ID := $(shell docker images -q rephraser-api-image))
 
 run:
-	docker run -p 127.0.0.1:8000:8000 phraser-api:latest 
+	docker run -p 127.0.0.1:8000:8000 rephraser-api-image:latest 
 
 deploy:
 	# deploy

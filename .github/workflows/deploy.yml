@@ -6,7 +6,7 @@ on:
 
 env:
   PROJECT_ID: rephraser-api 
-  GAR_LOCATION: europe-central2 #
+  GAR_LOCATION: europe-central2
   GKE_CLUSTER: rephraser-api 
   GKE_ZONE: europe-central2-a  
   DEPLOYMENT_NAME: rephraser-api-deployment 
@@ -56,5 +56,5 @@ jobs:
 
     - name: Deploy
       run: |-
-        kubectl apply -f deployment.yml
+        kubectl apply -f deploy.yml
 
