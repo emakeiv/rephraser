@@ -52,7 +52,6 @@ jobs:
           .
     - name: Publish
       run: |-
-        # Push the image with the generated version tag
         docker push "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE:$GITHUB_SHA"
 
     - name: Deploy
