@@ -12,6 +12,7 @@ env:
   DEPLOYMENT_NAME: rephraser-api-deployment 
   REPOSITORY: rephraser-api-repo  
   IMAGE: rephraser-api-image
+  VERSION_TAG: ${{ steps.generate-version-tag.outputs.version_tag }}
 
 jobs:
   setup-build-publish-deploy:
@@ -44,17 +45,21 @@ jobs:
         location: ${{ env.GKE_ZONE }}
   
     - name: Build
+      id: generate-version-tag
       run: |-
-        VERSION_TAG=$(date +'%Y%m%d%H%M%S')
+        echo "::set-output name=version_tag::$(date +'%Y%m%d%H%M%S')"
         docker build \
           --tag "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE:$VERSION_TAG" \
           --build-arg GITHUB_SHA="$GITHUB_SHA" \
           --build-arg GITHUB_REF="$GITHUB_REF" \
           .
+    - name: Print VERSION_TAG
+      run: echo "VERSION_TAG: $GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE:$VERSION_TAG"
+   
     - name: Publish
-      run: |-
-        # Push the image with the generated version tag
-        docker push "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE:$VERSION_TAG"
+        run: |-
+          VERSION_TAG=$(date +'%Y%m%d%H%M%S')
+          docker push "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE:$VERSION_TAG"
 
     - name: Deploy
       run: |-
