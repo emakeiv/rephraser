@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: rephraser-api-container
-          image: gcr.io/$PROJECT_ID/$REPOSITORY/$IMAGE:$VERSION_TAG
+          image: gcr.io/$PROJECT_ID/$REPOSITORY/$IMAGE
           ports:
             - containerPort: 8000
