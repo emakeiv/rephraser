@@ -53,9 +53,7 @@ jobs:
           --build-arg GITHUB_SHA="$GITHUB_SHA" \
           --build-arg GITHUB_REF="$GITHUB_REF" \
           .
-    - name: Print VERSION_TAG
-      run: echo "VERSION_TAG: $GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE:$VERSION_TAG"
-   
+  
     - name: Publish
         run: |-
           VERSION_TAG=$(date +'%Y%m%d%H%M%S')
