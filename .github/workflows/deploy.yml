@@ -10,7 +10,8 @@ env:
   GKE_CLUSTER: rephraser-api 
   GKE_ZONE: europe-central2-a  
   DEPLOYMENT_NAME: rephraser-api-deployment 
-  REPOSITORY: rephraser-api-repo
+  REPOSITORY: rephraser-api-repo  
+  IMAGE: rephraser-api-image
 
 jobs:
   setup-build-publish-deploy:
@@ -44,7 +45,6 @@ jobs:
   
     - name: Build
       run: |-
-        # Use the current date and time as the version tag
         VERSION_TAG=$(date +'%Y%m%d%H%M%S')
         docker build \
           --tag "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE:$VERSION_TAG" \
