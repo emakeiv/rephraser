@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: rephraser-api-container
-          image: gcr.io/{{ env.PROJECT_ID }}/{{ env.REPOSITORY }}/{{ env.IMAGE }}:${{ env.TAG }}
+          image: gcr.io/rephraser-api-repo/rephraser-api-image:latest
           ports:
             - containerPort: 8000
