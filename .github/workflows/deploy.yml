@@ -55,8 +55,8 @@ jobs:
           .
   
     - name: Publish
-        run: |-
-          docker push "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE:$VERSION_TAG"
+      run: |-
+        docker push "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE:$VERSION_TAG"
 
     - name: Deploy
       run: |-
