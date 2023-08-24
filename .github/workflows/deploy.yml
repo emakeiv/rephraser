@@ -56,5 +56,10 @@ jobs:
 
     - name: Deploy
       run: |-
-        kubectl apply -f deploy.yml
+        kubectl apply -f kubectl/deployment.yml
+    - name: Serve
+      run: |-
+        kubectl apply -f kubectl/service.yml
+        kubectl rollout status deployment/$DEPLOYMENT_NAME
+        kubectl get services -o wide
 
