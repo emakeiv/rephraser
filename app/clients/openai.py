@@ -11,7 +11,10 @@ class OpenAiServiceClient:
             messages = [{"role": "user", "content": promt}]
 
             response = openai.ChatCompletion.create(
-                model=self.model, messages=messages, temperature=0
+                model=self.model, 
+                messages=messages, 
+                temperature=0.5, 
+                frequency_penalty=1
             )
 
             return [
