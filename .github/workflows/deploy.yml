@@ -56,7 +56,6 @@ jobs:
   
     - name: Publish
         run: |-
-          VERSION_TAG=$(date +'%Y%m%d%H%M%S')
           docker push "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE:$VERSION_TAG"
 
     - name: Deploy
