@@ -5,7 +5,7 @@ install:
 		pip install -r requirements.txt
 
 format:
-	black app tests
+	black app tests 
 
 lint:
 	pylint --disable=R,C app
